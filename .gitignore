@@ -102,9 +102,9 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
-env/
+.env
+#env/       # env/ folder should not be pushed to git but let's keep it here for integrity
 venv/
 ENV/
 env.bak/

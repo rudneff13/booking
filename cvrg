@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# script to measure coverage during development
+
+set -e
+docker-compose exec web coverage erase
+docker-compose exec web coverage run manage.py test
+#docker-compose exec web coverage report

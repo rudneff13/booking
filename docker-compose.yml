@@ -1,0 +1,35 @@
+version: "3"
+services:
+
+  web:
+    environment:
+      - environment_type=development
+      - PYTHONUNBUFFERED=1
+    build: .
+    command: >
+      bash -c "python manage.py migrate
+      && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    links:
+      - db:db
+    networks:
+      - booking_network
+
+  db:
+    image: postgres
+    restart: always
+    env_file:
+      - env/.env.development
+    ports:
+      - '5432:5432'
+    networks:
+      - booking_network
+
+networks:
+  booking_network:
+    driver: bridge

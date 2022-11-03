@@ -1,0 +1,9 @@
+[report]
+show_missing = True
+omit =
+    manage.py
+    utils/env_utils.py
+
+
+[run]
+branch=True
